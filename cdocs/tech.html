@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Технические детали &mdash; Документация VPNFace Lite 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Использование" href="lite.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> VPNFace Lite
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lite.html">Использование</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Технические детали</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tch-main">Общая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn">VPN подсети</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tor">Конфигурация TOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nginx">Конфигурация NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-dir">Директория данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#s-ca">Центр ключей &lt;S&gt;_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ovpn-s-cli">OVPN генератор &lt;S&gt;_cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ip-json">Сетевые настройки ip.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#servers-json">База данных servers.json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#etc-openvpn">Серверная структура /etc/openvpn/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conf-type">CONF.TYPE настройка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conf-js">Файл конфигурации conf.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpnface-lite">Сервис vpnface_lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iptables">Iptables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nodejs">NodeJS</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VPNFace Lite</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Технические детали</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tech.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Технические детали<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="tch-main">
+<span id="id2"></span><h2>Общая информация<a class="headerlink" href="#tch-main" title="Ссылка на этот заголовок">¶</a></h2>
+<p>VPNFace Lite не использует никаких специальных баз данных, не занимается синхронизацией с центрами сертификтов, и хранит все данные в двух json файлах.</p>
+<p>Во время <a class="reference internal" href="install.html#def-install"><span class="std std-ref">Простая установка (по умолчанию)</span></a>, доставляются и конфигурируются необходимые пакеты из официальных репозиториев, после установки VPNFace Lite отвечает только за управление ключами vpn серверов.</p>
+</div>
+<div class="section" id="vpn">
+<span id="vpn-intranets"></span><h2>VPN подсети<a class="headerlink" href="#vpn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>По умолчанию VPNFace Lite создаёт три OpenVPN сервера со следующими сетвыми настройками:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="26%" />
+<col width="22%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">VPN</th>
+<th class="head">Подсеть</th>
+<th class="head">Интерфейс</th>
+<th class="head">Адрес сервера</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Админ VPN</td>
+<td>10.1.0.0/24</td>
+<td>tun0</td>
+<td>10.1.0.1</td>
+</tr>
+<tr class="row-odd"><td>Dark VPN</td>
+<td>10.2.0.0/24</td>
+<td>tun1</td>
+<td>10.2.0.1</td>
+</tr>
+<tr class="row-even"><td>Inet VPN</td>
+<td>10.3.0.0/24</td>
+<td>tun2</td>
+<td>10.3.0.1</td>
+</tr>
+</tbody>
+</table>
+<p>На уровне <code class="docutils literal notranslate"><span class="pre">iptables</span></code> при <a class="reference internal" href="install.html#def-install"><span class="std std-ref">Простая установка (по умолчанию)</span></a> сети настраиваются следующим образом:</p>
+<p>Админ VPN: Полный доступ к серверу по адресу 10.1.0.1, отсутсвие интернета.</p>
+<p>Dark VPN: DNS запросы перенаправляются на TorDNS на порту 5300, весь tcp трафик перенаправляется в тор на порту 9040, остальной udp трафик никуда не уходит.</p>
+<p>Inet VPN: В качестве DNS серверов используются Google DNS 8.8.8.8, и 8.8.4.4. Весь сетевой трафик через NAT отправляется в интернет.</p>
+</div>
+<div class="section" id="tor">
+<span id="config-tor"></span><h2>Конфигурация TOR<a class="headerlink" href="#tor" title="Ссылка на этот заголовок">¶</a></h2>
+<p>По умолчанию TOR настраивается по следующей конфигурации:</p>
+<p><code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/tor.conf</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">DataDirectory /var/lib/tor</div>
+<div class="line"><br /></div>
+<div class="line">VirtualAddrNetworkIPv4 12.0.0.0/16</div>
+<div class="line">AutomapHostsOnResolve 1</div>
+<div class="line">TransPort 10.2.0.1:9040</div>
+<div class="line">DNSPort 10.2.0.1:5300</div>
+<div class="line"><br /></div>
+<div class="line">StrictNodes 1</div>
+<div class="line">ExcludeExitNodes «{AF},{AL},{DZ},{AI},{BH},{BY},{BT},{BW},{BR},{KH},{CF},{TD},{CL},{CN},{MO},{CG},{CD},{DJ},{EG},{ET},{GA},{GM},{GH},{IR},{IQ},{JO},{KZ},{KE},{KI},{KP},{KW},{KG},{LR},{LY},{MY},{MZ},{NA},{NR},{NI},{NE},{NG},{OM},{PK},{PS},{QA},{RU},{RW},{SA},{SN},{SO},{ZA},{SS},{SD},{SY},{TJ},{TZ},{TH},{TL},{TG},{TK},{TO},{TT},{TN},{TR},{TV},{UG},{UA},{UZ},{VE},{VN},{YE},{ZM},{ZW},{NP},{IN},{LK}»</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="nginx">
+<span id="config-nginx"></span><h2>Конфигурация NGINX<a class="headerlink" href="#nginx" title="Ссылка на этот заголовок">¶</a></h2>
+<p>По умолчанию NGINX настраивается по следующей конфигурации:</p>
+<p><code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/nginx.conf</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">#панель управления</div>
+<div class="line">server {</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">listen 10.1.0.1:80;</div>
+</div>
+<div class="line">access_log   /var/log/nginx/vpnface_lite.proxy.log;</div>
+<div class="line">location / {</div>
+<div class="line-block">
+<div class="line">proxy_pass      <a class="reference external" href="http://127.0.0.1:8808">http://127.0.0.1:8808</a>;</div>
+</div>
+<div class="line">}</div>
+</div>
+<div class="line">}</div>
+<div class="line">#документация</div>
+<div class="line">server {</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">listen 10.1.0.1:81;</div>
+</div>
+<div class="line">access_log   /var/log/nginx/vpnface_lite.docs.log;</div>
+<div class="line">root /opt/vpnface_lite/cdocs;</div>
+<div class="line">index index.html;</div>
+<div class="line"><br /></div>
+<div class="line">location / {</div>
+<div class="line-block">
+<div class="line">default_type «text/html»;</div>
+<div class="line">try_files $uri.html $uri $uri/ /index.html;</div>
+</div>
+<div class="line">}</div>
+</div>
+<div class="line">}</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="data-dir">
+<span id="id3"></span><h2>Директория данных<a class="headerlink" href="#data-dir" title="Ссылка на этот заголовок">¶</a></h2>
+<p>По умолчанию VPNFace Lite хранит данные в папке <code class="docutils literal notranslate"><span class="pre">/opt/vpnface_ca</span></code>. Для каждого сервера с кодом &lt;S&gt; создаются две директории: <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;_ca</span></code> и <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;_cli</span></code>. Так же в этой директории хранятся файлы <code class="docutils literal notranslate"><span class="pre">ip.json</span></code> и <code class="docutils literal notranslate"><span class="pre">servers.js</span></code>.</p>
+<p>Значения &lt;S&gt; при <a class="reference internal" href="install.html#def-install"><span class="std std-ref">Простая установка (по умолчанию)</span></a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">VPN</th>
+<th class="head">&lt;S&gt;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Админ VPN</td>
+<td>adm</td>
+</tr>
+<tr class="row-odd"><td>Dark VPN</td>
+<td>darknet</td>
+</tr>
+<tr class="row-even"><td>Inet VPN</td>
+<td>inet</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="s-ca">
+<span id="ca-dir"></span><h3>Центр ключей &lt;S&gt;_ca<a class="headerlink" href="#s-ca" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Директория создаётся коммандой <code class="docutils literal notranslate"><span class="pre">make-cadir</span> <span class="pre">DIR</span></code> из пакета <code class="docutils literal notranslate"><span class="pre">easy-rsa</span></code> и дополняется следующими скриптами:</p>
+<p><code class="docutils literal notranslate"><span class="pre">build-crl</span></code> из шаблона <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/build-crl.sh</span></code> для генерации файла блокировок.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">#!/bin/sh</div>
+<div class="line"><br /></div>
+<div class="line"># revoke a certificate, regenerate CRL,</div>
+<div class="line"># and verify revocation</div>
+<div class="line"><br /></div>
+<div class="line">if [ -z «$KEY_DIR» ]; then</div>
+<div class="line-block">
+<div class="line">echo „Please source the vars script first (i.e. «source ./vars»)“</div>
+<div class="line">exit 1</div>
+</div>
+<div class="line">fi</div>
+<div class="line"><br /></div>
+<div class="line">CRL=»crl.pem»</div>
+<div class="line"><br /></div>
+<div class="line">cd «$KEY_DIR»</div>
+<div class="line"># set defaults</div>
+<div class="line">export KEY_CN=»«</div>
+<div class="line">export KEY_OU=»«</div>
+<div class="line">export KEY_NAME=»«</div>
+<div class="line"># required due to hack in openssl.cnf that supports Subject Alternative Names</div>
+<div class="line">export KEY_ALTNAMES=»«</div>
+<div class="line"># generate a new CRL – try to be compatible with</div>
+<div class="line"># intermediate PKIs</div>
+<div class="line">$OPENSSL ca -gencrl -out «$CRL» -config «$KEY_CONFIG»</div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">revoke-key</span></code> из шаблона <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/revoke-key.sh</span></code> с заменой ключа #MPORT на менеджмент порт openvpn сервера для блокировки пользователя.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">#!/bin/bash</div>
+<div class="line"><br /></div>
+<div class="line">if [ $# -ne 1 ]; then</div>
+<div class="line-block">
+<div class="line">echo «usage: voke-key &lt;cert-name-base&gt;»;</div>
+<div class="line">exit 1</div>
+</div>
+<div class="line">fi</div>
+<div class="line">if [ -z «$KEY_DIR» ]; then</div>
+<div class="line-block">
+<div class="line">echo „Please source the vars script first (i.e. «source ./vars»)“</div>
+<div class="line">exit 1</div>
+</div>
+<div class="line">fi</div>
+<div class="line"><br /></div>
+<div class="line">KEYS_INDEX=$KEY_DIR/index.txt</div>
+<div class="line">LINE=`grep «/CN=$1/» $KEYS_INDEX`</div>
+<div class="line">COLS_NUM=`echo $LINE | awk -F“ „ „{print NF;}“`</div>
+<div class="line"><br /></div>
+<div class="line">echo $COLS_NUM</div>
+<div class="line"><br /></div>
+<div class="line">if [[ $COLS_NUM -eq 5 ]] &amp;&amp; [[ $LINE == V* ]]; then</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">./revoke-full $1</div>
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">sleep 3</div>
+<div class="line">echo kill $1</div>
+<div class="line">sleep 3</div>
+<div class="line">echo exit</div>
+</div>
+<div class="line">} | telnet localhost #MPORT</div>
+<div class="line">echo «Certificate revoked successfully.»</div>
+<div class="line">exit 0;</div>
+</div>
+<div class="line">elif [[ $COLS_NUM -eq 6 ]] &amp;&amp; [[ $LINE == R* ]]; then</div>
+<div class="line-block">
+<div class="line">echo «Client certificate is already revoked.»</div>
+<div class="line">exit 0;</div>
+</div>
+<div class="line">else</div>
+<div class="line-block">
+<div class="line">echo «Error; Key index file may be corrupted.»</div>
+<div class="line">exit 1;</div>
+</div>
+<div class="line">fi</div>
+</div>
+<p>и <code class="docutils literal notranslate"><span class="pre">voke-key</span></code> с шаблона <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/voke-key.sh</span></code> для разблокирования пользовательского ключа</p>
+<div class="line-block">
+<div class="line">#!/bin/bash</div>
+<div class="line"><br /></div>
+<div class="line">if [ $# -ne 1 ]; then</div>
+<div class="line-block">
+<div class="line">echo «usage: voke-key &lt;cert-name-base&gt;»;</div>
+<div class="line">exit 1</div>
+</div>
+<div class="line">fi</div>
+<div class="line">if [ -z «$KEY_DIR» ]; then</div>
+<div class="line-block">
+<div class="line">echo „Please source the vars script first (i.e. «source ./vars»)“</div>
+<div class="line">exit 1</div>
+</div>
+<div class="line">fi</div>
+<div class="line"><br /></div>
+<div class="line">KEYS_INDEX=$KEY_DIR/index.txt</div>
+<div class="line">NLINE=`grep -n «/CN=$1/» $KEYS_INDEX`</div>
+<div class="line">LINE=`grep «/CN=$1/» $KEYS_INDEX`</div>
+<div class="line">LINE_NUM=`echo $NLINE | cut -f1 -d:`</div>
+<div class="line">COLS_NUM=`echo $LINE | awk -F“ „ „{print NF;}“`</div>
+<div class="line"><br /></div>
+<div class="line">echo $COLS_NUM</div>
+<div class="line"><br /></div>
+<div class="line">if [[ $COLS_NUM -eq 6 ]] &amp;&amp; [[ $LINE == R* ]]; then</div>
+<div class="line-block">
+<div class="line">COL2=`echo $NLINE | awk „{print $2}“`</div>
+<div class="line">COL4=`echo $NLINE | awk „{print $4}“`</div>
+<div class="line">COL5=`echo $NLINE | awk „{print $5}“`</div>
+<div class="line">COL6=`echo $NLINE | awk „{print $6}“`</div>
+<div class="line">echo -e «Vt$COL2tt$COL4t$COL5t$COL6» &gt;&gt; $KEYS_INDEX</div>
+<div class="line">sed -i «${LINE_NUM}d» $KEYS_INDEX</div>
+<div class="line">./build-crl</div>
+<div class="line">echo «Certificate unrevoked successfully.»</div>
+<div class="line">exit 0;</div>
+</div>
+<div class="line">elif [[ $COLS_NUM -eq 5 ]] &amp;&amp; [[ $LINE == V* ]]; then</div>
+<div class="line-block">
+<div class="line">echo «Certificate is already unrevoked and active»</div>
+<div class="line">exit 0;</div>
+</div>
+<div class="line">else</div>
+<div class="line-block">
+<div class="line">echo «Error; Key index file may be corrupted.»</div>
+<div class="line">exit 1;</div>
+</div>
+<div class="line">fi</div>
+</div>
+</div></blockquote>
+<p>так же, при автоматическом создании серверов в файле <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;_ca/vars</span></code> производятся настройки данных сертификата.</p>
+<p>все ключи и файлы криптографии сохраняются в директории <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;_ca/keys</span></code>.</p>
+</div>
+<div class="section" id="ovpn-s-cli">
+<span id="cli-dir"></span><h3>OVPN генератор &lt;S&gt;_cli<a class="headerlink" href="#ovpn-s-cli" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Директория содержит базовый клиентский конфиг сервера, и скрипт для генерации ovpn файлов. Так же тут нахдится директория <code class="docutils literal notranslate"><span class="pre">files</span></code> в которую помещаются сгенерированные клиентские ovpn файлы.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cli.conf</span></code> - шаблон клиентского конфига, при <a class="reference internal" href="install.html#def-install"><span class="std std-ref">Простая установка (по умолчанию)</span></a> генерируется при создании серверов, с заменой ключей необходимыми данными из шаблона <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/cli.conf</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">client</div>
+<div class="line">dev tun</div>
+<div class="line">proto #PROTO</div>
+<div class="line">remote #REMOTE #PORT</div>
+<div class="line">#GW</div>
+<div class="line">nobind</div>
+<div class="line">user nobody</div>
+<div class="line">group nogroup</div>
+<div class="line">persist-key</div>
+<div class="line">persist-tun</div>
+<div class="line">remote-cert-tls server</div>
+<div class="line">key-direction 1</div>
+<div class="line">cipher AES-256-CBC</div>
+<div class="line">auth SHA256</div>
+<div class="line">verb 3</div>
+</div>
+</div></blockquote>
+<p>таблица ключей</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="36%" />
+<col width="18%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ключ</th>
+<th class="head">значение</th>
+<th class="head">Admin VPN</th>
+<th class="head">Dark VPN</th>
+<th class="head">Inet VPN</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>#PROTO</td>
+<td>протокол tcp/udp</td>
+<td>udp</td>
+<td>udp</td>
+<td>udp</td>
+</tr>
+<tr class="row-odd"><td>#REMOTE</td>
+<td>интернет ip сервера</td>
+<td>server_ip</td>
+<td>server_ip</td>
+<td>server_ip</td>
+</tr>
+<tr class="row-even"><td>#PORT</td>
+<td>порт openvpn сервера</td>
+<td>1194</td>
+<td>1195</td>
+<td>1196</td>
+</tr>
+<tr class="row-odd"><td>#GW</td>
+<td>параметры DNS/route</td>
+<td>—</td>
+<td>TOR DNS</td>
+<td>GoogleDNS</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">cli.sh</span></code> - баш скрипт генерации ovpn файла, из шаблона <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/cli.sh</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">#!/bin/bash</div>
+<div class="line"><br /></div>
+<div class="line">#KEY_DIR</div>
+<div class="line">#OUTPUT_DIR</div>
+<div class="line">#BASE_CONFIG</div>
+<div class="line"><br /></div>
+<div class="line">cat ${BASE_CONFIG} </div>
+<div class="line-block">
+<div class="line">&lt;(echo -e „&lt;ca&gt;“) </div>
+<div class="line">${KEY_DIR}/ca.crt </div>
+<div class="line">&lt;(echo -e „&lt;/ca&gt;n&lt;cert&gt;“) </div>
+<div class="line">${KEY_DIR}/${1}.crt </div>
+<div class="line">&lt;(echo -e „&lt;/cert&gt;n&lt;key&gt;“) </div>
+<div class="line">${KEY_DIR}/${1}.key </div>
+<div class="line">&lt;(echo -e „&lt;/key&gt;n&lt;tls-auth&gt;“) </div>
+<div class="line">${KEY_DIR}/ta.key </div>
+<div class="line">&lt;(echo -e „&lt;/tls-auth&gt;“) </div>
+<div class="line">&gt; ${OUTPUT_DIR}/${1}.ovpn</div>
+</div>
+</div>
+</div></blockquote>
+<p>таблица ключей</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ключ</th>
+<th class="head">значение</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>#KEY_DIR</td>
+<td>директория &lt;S&gt;_ca/keys - источник ключей</td>
+</tr>
+<tr class="row-odd"><td>#OUTPUT_DIR</td>
+<td>дирекория &lt;S&gt;_cli/files - выходные ovpn</td>
+</tr>
+<tr class="row-even"><td>#BASE_CONFIG</td>
+<td>файл &lt;S&gt;_cli/cli.conf - шаблон клиентского конфига</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ip-json">
+<span id="config-ip"></span><h3>Сетевые настройки ip.json<a class="headerlink" href="#ip-json" title="Ссылка на этот заголовок">¶</a></h3>
+<blockquote>
+<div><div class="line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">«ip»: «интернет ip адрес сервера»,</div>
+<div class="line">«dev»: «интернет сетевой интерфейс, например eth0»</div>
+</div>
+<div class="line">}</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="servers-json">
+<span id="config-servers"></span><h3>База данных servers.json<a class="headerlink" href="#servers-json" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Файл содержит базу данных серверов и клиентов, на которую опирается VPNFace Lite. Если вы производите ручную установку для уже имеющихся серверов (<a class="reference internal" href="install.html#man-install"><span class="std std-ref">Ручная установка</span></a>), вам требуется при установке сформировать этот файл вручную по следующему формату:</p>
+<p>В качестве примера используется сервер S1 с подсетью 10.1.0.1/24, и содержит полный пример конфига, а сервер S2 настроен в минимальном для работы режиме, для примера установки на уже имеющийся сервер, с подготовленной вручную структурой файлов и директорий.</p>
+<p>Поля, помеченые * используются только во время создания сервера</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">«S1»: {</div>
+<div class="line-block">
+<div class="line">«code»: «S1»,</div>
+<div class="line">«name»: «Имя сервера для панели управления»,</div>
+<div class="line">«desc»: «Описание для панели управления»,</div>
+<div class="line">«logs»: true/false, //* ведёт ли сервер логи</div>
+<div class="line">«friends»: true/false,  //* видят ли клиенты друг-друга</div>
+<div class="line">«maxclients»: 100,  //* максимальное количество соединений</div>
+<div class="line">«type»: «root», //тип сервера</div>
+<div class="line">«network»: {</div>
+<div class="line-block">
+<div class="line">«host»: «0.0.0.0»,  //* на каком хосте запускать openvpn сервер</div>
+<div class="line">«remote»: «интернет ip сервера», //*</div>
+<div class="line">«intranet»: «10.1.0.0/24»,  //* vpn подсеть</div>
+<div class="line">«port»: 1194, //* на каком порту vpn сервер ожидает клиентов</div>
+<div class="line">«mport»: 2294, //* порт управления vpn сервером</div>
+<div class="line">«proto»: «udp», //* протокол соединения</div>
+<div class="line">«dev»: «tun0», //сетевой интерфейс vpn сервера на сервере</div>
+</div>
+<div class="line">},</div>
+<div class="line">«cert»: { //* параметры сертификата для файла S1_ca/vars</div>
+<div class="line-block">
+<div class="line">«country»: «US»,</div>
+<div class="line">«province»: «CA»,</div>
+<div class="line">«city»: «City»,</div>
+<div class="line">«org»: «Organisation»,</div>
+<div class="line">«email»: «<a class="reference external" href="mailto:email&#37;&#52;&#48;domain&#46;zone">email<span>&#64;</span>domain<span>&#46;</span>zone</a>»,</div>
+<div class="line">«ou»: «Organization Unit»</div>
+</div>
+<div class="line">},</div>
+<div class="line">«intranet»: { //* сетевые данные vpn подсети, генерируются при создании</div>
+<div class="line-block">
+<div class="line">«networkAddress»: «10.1.0.0»,</div>
+<div class="line">«firstAddress»: «10.1.0.1»,</div>
+<div class="line">«lastAddress»: «10.1.0.254»,</div>
+<div class="line">«broadcastAddress»: «10.1.0.255»,</div>
+<div class="line">«subnetMask»: «255.255.255.0»,</div>
+<div class="line">«subnetMaskLength»: 24,</div>
+<div class="line">«numHosts»: 254,</div>
+<div class="line">«length»: 256</div>
+</div>
+<div class="line">},</div>
+<div class="line">«clients»: [  // массив клиентов.</div>
+<div class="line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">«code»: «client1_code», // код ключа</div>
+<div class="line">«blocked»: true/false, // состояние блокировки</div>
+<div class="line">«server»: «S1» // код сервера, для удобства</div>
+</div>
+<div class="line">},{</div>
+<div class="line-block">
+<div class="line">«code»: «client2_code», // код ключа</div>
+<div class="line">«blocked»: true/false, // состояние блокировки</div>
+<div class="line">«server»: «S1» // код сервера, для удобства</div>
+</div>
+<div class="line">}</div>
+</div>
+<div class="line">]</div>
+</div>
+<div class="line">},</div>
+<div class="line">«S2»: {</div>
+<div class="line-block">
+<div class="line">«code»: «S2»,</div>
+<div class="line">«name»: «Имя сервера для панели управления»,</div>
+<div class="line">«desc»: «Описание для панели управления»,</div>
+<div class="line">«maxclients»: 100,  //* максимальное количество соединений, отображается в панели</div>
+<div class="line">«type»: «public», //тип сервера</div>
+<div class="line">«clients»: [  // массив клиентов.</div>
+<div class="line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">«code»: «client1_code», // код ключа</div>
+<div class="line">«blocked»: true/false, // состояние блокировки</div>
+<div class="line">«server»: «S1» // код сервера, для удобства</div>
+</div>
+<div class="line">},{</div>
+<div class="line-block">
+<div class="line">«code»: «client2_code», // код ключа</div>
+<div class="line">«blocked»: true/false, // состояние блокировки</div>
+<div class="line">«server»: «S1» // код сервера, для удобства</div>
+</div>
+<div class="line">}</div>
+</div>
+<div class="line">]</div>
+</div>
+<div class="line">},</div>
+<div class="line">«&lt;S3&gt;»: { … }</div>
+<div class="line">«&lt;S4&gt;»: { … }</div>
+</div>
+<div class="line">}</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="etc-openvpn">
+<span id="config-openvpn"></span><h2>Серверная структура /etc/openvpn/<a class="headerlink" href="#etc-openvpn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В директории <code class="docutils literal notranslate"><span class="pre">/etc/openvpn/</span></code> хранятся конфигурации и ключи рабочих серверов. Для каждого сервера VPNFace Lite создаёт директорию <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;</span></code> в которуй хранятся файлы ключей, криптографии и блокировок, и файл <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;.conf</span></code> серверной конфигурации, который создаётся по шаблону <code class="docutils literal notranslate"><span class="pre">vpnface_lite/tpl/server.conf</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">#LOCAL</div>
+<div class="line">port #PORT</div>
+<div class="line">proto #PROTO</div>
+<div class="line">dev #DEV</div>
+<div class="line">ca #CA_CRT</div>
+<div class="line">cert #SERVER_CRT</div>
+<div class="line">key #SERVER_KEY</div>
+<div class="line">dh #DH_PEM</div>
+<div class="line">#INTRANET</div>
+<div class="line">ifconfig-pool-persist /var/log/openvpn/ipp-#SERVER.txt</div>
+<div class="line">#GW</div>
+<div class="line">#FRIENDS</div>
+<div class="line">keepalive 10 120</div>
+<div class="line">tls-auth #TA_KEY 0</div>
+<div class="line">key-direction 0</div>
+<div class="line">cipher AES-256-CBC</div>
+<div class="line">auth SHA256</div>
+<div class="line">crl-verify #SERVER_CRL</div>
+<div class="line">management 127.0.0.1 #MANAGEMENT_PORT</div>
+<div class="line">max-clients #MAX_CLIENTS</div>
+<div class="line">user nobody</div>
+<div class="line">group nogroup</div>
+<div class="line">persist-key</div>
+<div class="line">persist-tun</div>
+<div class="line">#LOG</div>
+<div class="line">verb 3</div>
+<div class="line">explicit-exit-notify 1</div>
+</div>
+</div></blockquote>
+<p>таблица ключей</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ключ</th>
+<th class="head">значение</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>#LOCAL</td>
+<td>значение &lt;conf.network.host&gt; если не 0.0.0.0</td>
+</tr>
+<tr class="row-odd"><td>#PORT</td>
+<td>порт клиентских соединений</td>
+</tr>
+<tr class="row-even"><td>#DEV</td>
+<td>сетевой интерфейс</td>
+</tr>
+<tr class="row-odd"><td>#CA_CRT</td>
+<td>&lt;S&gt;/ca.crt</td>
+</tr>
+<tr class="row-even"><td>#SERVER_CRT</td>
+<td>&lt;S&gt;/&lt;S&gt;.crt</td>
+</tr>
+<tr class="row-odd"><td>#DH_PEM</td>
+<td>&lt;S&gt;/dh2048.pem</td>
+</tr>
+<tr class="row-even"><td>#INTRANET</td>
+<td>„server &lt;conf.intranet.*&gt;“</td>
+</tr>
+<tr class="row-odd"><td>#GW</td>
+<td>push route/DNS в зависимости от &lt;conf.type&gt;</td>
+</tr>
+<tr class="row-even"><td>#FRIENDS</td>
+<td>„client-to-client“ если &lt;conf.firends == true&gt;</td>
+</tr>
+<tr class="row-odd"><td>#SERVER_CRL</td>
+<td>&lt;S&gt;/crl.pem</td>
+</tr>
+<tr class="row-even"><td>#MANAGEMENT_PORT</td>
+<td>„127.0.0.1 &lt;conf.network.mport&gt;“</td>
+</tr>
+<tr class="row-odd"><td>#MAX_CLIENTS</td>
+<td>&lt;conf.maxclients&gt;</td>
+</tr>
+<tr class="row-even"><td>#LOG</td>
+<td>log-status и log-append в зависимости от &lt;conf.logs&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conf-type">
+<h2>CONF.TYPE настройка<a class="headerlink" href="#conf-type" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Параметр <code class="docutils literal notranslate"><span class="pre">type</span></code> в конфигурации оказывает влияние на опции создания OpenVPN серверов и иконку в панели администрирования.</p>
+<p>В будущем это будет оказывать влияние на настройки <code class="docutils literal notranslate"><span class="pre">iptables</span></code> но в версии Lite файрвол конфигурируется по предустановленым значениям, так что на iptables влияния нет.</p>
+<p>Таблица возможных значений</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="19%" />
+<col width="13%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">значение</th>
+<th class="head">iptables</th>
+<th class="head">server.conf</th>
+<th class="head">cli.conf</th>
+<th class="head">иконка в панели</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>public</td>
+<td>в интернет</td>
+<td>GoogleDNS</td>
+<td>–</td>
+<td>прозрачное облако</td>
+</tr>
+<tr class="row-odd"><td>root</td>
+<td>на сервер</td>
+<td>–</td>
+<td>no-push</td>
+<td>перечёркнутое облако</td>
+</tr>
+<tr class="row-even"><td>dark</td>
+<td>в тор</td>
+<td>TOR DNS</td>
+<td>–</td>
+<td>облако в закрашеном круге</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conf-js">
+<span id="config-conf"></span><h2>Файл конфигурации conf.js<a class="headerlink" href="#conf-js" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Файл располагается по пути <code class="docutils literal notranslate"><span class="pre">vpnface_lite/conf.js</span></code> и содержит настройки необходимые для постоянной работы, и установки в формате javascript.</p>
+<p>В случае запуска VPNFace Lite на работающих серверах без встроенной установки (<a class="reference internal" href="install.html#pnl-install"><span class="std std-ref">Установка панели управления на работающий сервер</span></a>), файл должен содержать два параметра: порт апи, и путь к директории данных.</p>
+<p>По умолчанию файл так же содержит конфигурации сертификата и серверов для <a class="reference internal" href="install.html#def-install"><span class="std std-ref">Простая установка (по умолчанию)</span></a>. В режиме <a class="reference internal" href="install.html#hlf-install"><span class="std std-ref">Установка с настройкой сертификатов или путей</span></a> этот файл можно отконфигурировать под требуемые значения.</p>
+<p>Структура файла:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">module.exports = {</div>
+<div class="line-block">
+<div class="line">dir: „/opt/vpnface_ca“,</div>
+<div class="line">port: 8808,</div>
+<div class="line">cert: CERT_CONFIG&lt;Общий сертификат «по умолчанию»&gt;,</div>
+<div class="line">servers: {</div>
+<div class="line-block">
+<div class="line">adm: SERVER_CONFIG&lt;Админ VPN&gt;,</div>
+<div class="line">inet: SERVER_CONFIG&lt;Интернет VPN&gt;,</div>
+<div class="line">dark: SERVER_CONFIG&lt;TOR VPN&gt;,</div>
+</div>
+<div class="line">}</div>
+</div>
+<div class="line">}</div>
+</div>
+</div></blockquote>
+<p>Полный пример можно посмотреть в файле по умолчанию</p>
+</div>
+<div class="section" id="vpnface-lite">
+<span id="service-info"></span><h2>Сервис vpnface_lite<a class="headerlink" href="#vpnface-lite" title="Ссылка на этот заголовок">¶</a></h2>
+<p>VPNFace Lite по умолчанию устанавливается в виде системного сервиса с названием <code class="docutils literal notranslate"><span class="pre">vpnface_lite</span></code> пакетом <code class="docutils literal notranslate"><span class="pre">forever_service</span></code>. Сервис ведёт логи в <code class="docutils literal notranslate"><span class="pre">/var/log/vpnface_lite.log</span></code></p>
+</div>
+<div class="section" id="iptables">
+<span id="iptables-info"></span><h2>Iptables<a class="headerlink" href="#iptables" title="Ссылка на этот заголовок">¶</a></h2>
+<p>iptables - linux файрвол. При автоматической установке выполняется следующий набор комманд, для установки правил:</p>
+<p>На старте установки:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">iptables -P INPUT ACCEPT</div>
+<div class="line">iptables -P FORWARD ACCEPT</div>
+<div class="line">iptables -P OUTPUT ACCEPT</div>
+<div class="line">iptables -t nat -F</div>
+<div class="line">iptables -t mangle -F</div>
+<div class="line">iptables -t nat -X</div>
+<div class="line">iptables -t mangle -X</div>
+<div class="line">iptables -F</div>
+<div class="line">iptables -X</div>
+<div class="line">echo «net.ipv4.ip_forward=1» &gt; /etc/sysctl.conf</div>
+<div class="line">echo «net.ipv6.conf.all.disable_ipv6 = 1» &gt;&gt; /etc/sysctl.conf</div>
+<div class="line">echo «net.ipv6.conf.default.disable_ipv6 = 1» &gt;&gt; /etc/sysctl.conf</div>
+<div class="line">echo «net.ipv6.conf.lo.disable_ipv6 = 1» &gt;&gt; /etc/sysctl.conf</div>
+<div class="line">sysctl -p</div>
+</div>
+</div></blockquote>
+<p>На завершении:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">iptables -A INPUT -i lo -j ACCEPT</div>
+<div class="line">iptables -A INPUT -m conntrack –ctstate ESTABLISHED,RELATED -j ACCEPT</div>
+<div class="line"><br /></div>
+<div class="line">iptables -A INPUT -p udp –dport 1194 -j ACCEPT</div>
+<div class="line">iptables -A INPUT -p udp –dport 1195 -j ACCEPT</div>
+<div class="line">iptables -A INPUT -p udp –dport 1196 -j ACCEPT</div>
+<div class="line"><br /></div>
+<div class="line">iptables -A INPUT -s 10.1.0.0/24 -j ACCEPT</div>
+<div class="line">iptables -A INPUT -s 10.2.0.0/24 -d 10.2.0.1 -j ACCEPT</div>
+<div class="line">iptables -A INPUT -s 10.3.0.0/24 -d 10.3.0.1 -j ACCEPT</div>
+<div class="line"><br /></div>
+<div class="line">iptables -t nat -A POSTROUTING -s 10.3.0.0/24 -o &lt;IP.JSON:DEV&gt; -j MASQUERADE</div>
+<div class="line"><br /></div>
+<div class="line">iptables -t nat -A PREROUTING -i tun1 -p udp –dport 53 -j REDIRECT –to-ports 5300</div>
+<div class="line">iptables -t nat -A PREROUTING -i tun1 -p tcp –syn -j REDIRECT –to-ports 9040</div>
+<div class="line"><br /></div>
+<div class="line">iptables -A INPUT -j DROP</div>
+</div>
+</div></blockquote>
+<p>Обратите внимание, на опции, устанавливаемые в <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.conf</span></code></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">net.ipv4.ip_forward = 1</div>
+<div class="line">net.ipv6.conf.all.disable_ipv6 = 1</div>
+<div class="line">net.ipv6.conf.default.disable_ipv6 = 1</div>
+<div class="line">net.ipv6.conf.lo.disable_ipv6 = 1</div>
+</div>
+</div></blockquote>
+<p>для возможности роутинга трафика и отключения ip v6.</p>
+</div>
+<div class="section" id="nodejs">
+<span id="nodejs-info"></span><h2>NodeJS<a class="headerlink" href="#nodejs" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для установки nodejs v10 используется <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">version</span> <span class="pre">manager</span></code> <a class="reference external" href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a></p>
+<p>После установки скприт <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> создаёт линк на 10 версию ноды в общесистемный путь</p>
+<p><code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">`whitch</span> <span class="pre">node`</span> <span class="pre">/usr/sbin</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="lite.html" class="btn btn-neutral" title="Использование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, abrakadobr.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'ru',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

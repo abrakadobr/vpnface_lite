@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Использование &mdash; Документация VPNFace Lite 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Технические детали" href="tech.html" />
+    <link rel="prev" title="Установка" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> VPNFace Lite
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Использование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vpn">VPN сервера</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Админ VPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Интернет VPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dark-tor-vpn">Dark (TOR) VPN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Панель управления ключами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-api">JSON API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Технические детали</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VPNFace Lite</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Использование</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/lite.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Использование<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="vpn">
+<h2>VPN сервера<a class="headerlink" href="#vpn" title="Ссылка на этот заголовок">¶</a></h2>
+<p>VPN соединение - шифрованное соединение напрямую между клиентом и сервером. Такие <em>сетевые туннели</em> позволяют связать пользователей из разных геолокаций планеты и интернет операторов в общую защинённую от доступа «из-вне» сеть.</p>
+<p>По умолчанию, VPNFace Lite создаёт три OpenVPN сервера для различных задач:</p>
+<div class="section" id="id2">
+<h3>Админ VPN<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>VPN предназначен для обеспечения безопасности серверного администрирования, поэтому он не подключён к общей интернет сети, и при подключении с установками клиента по умолчанию - у клиента отсутсвует доступ в интернет.</p>
+<p>В этой vpn подсети (10.1.0.0/24) сервер полностью доступен по адресу 10.1.0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">10.1.0.1</span></code> для ssh соединения, <code class="docutils literal notranslate"><span class="pre">http://10.1.0.1</span></code> - для доступа в панель управления ключами, <code class="docutils literal notranslate"><span class="pre">http://10.1.0.1:81</span></code> - докментация.</p>
+</div>
+<div class="section" id="id3">
+<h3>Интернет VPN<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>VPN предназначен для доступа в общий интернет через сервер. Это позволяет держать зашифрованными все данные между клиентом и сервером, и подменяет «интернет публичные» данные клиента данными сервера, так как расшифрованый интернет трафик в <em>публичный интернет</em> выходит уже с сервера.</p>
+<p>DNS запросы пользователя отправляются на публичные Google DNS 8.8.8.8 и 8.8.4.4</p>
+</div>
+<div class="section" id="dark-tor-vpn">
+<h3>Dark (TOR) VPN<a class="headerlink" href="#dark-tor-vpn" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Dark VPN <em>(англ. тёмный, чёрный)</em>, использует TOR даркнет для доступа в интернет. Пользовательский трафик проходит шифровано до сервера через vpn туннель, откуда перенаправляется в TOR сеть. Перенаправляются так же и DNS запросы, поэтому любые *.onion сайты работают автоматически, прозрачно для пользователя.</p>
+<p>Настройка TOR по умолчанию описана в <a class="reference internal" href="tech.html#config-tor"><span class="std std-ref">Конфигурация TOR</span></a>, ряд стран по умолчанию поставлен в блокированные в качестве выходных узлов.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Панель управления ключами<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<img alt="Панель управления ключами" src="_images/panel.png" />
+<p>Панель упрощена до минимума, и позволяет создавать, блокировать и разблокировать клиентские ключи, а так же скачивать готовую конфигурацию в виде ovpn файла.</p>
+<p>Панель написана на <code class="docutils literal notranslate"><span class="pre">AngularJS</span> <span class="pre">6</span></code>, представляет из себя веб приложение для использования vpnface_lite api endpoints и идёт по умолчанию в комплекте с серверными файлами в скомпилированном виде.</p>
+<p>Исходные коды так же доступны в отдельном репозитории <a class="reference external" href="https://github.com/abrakadobr/vpnface_lite_ng.git">https://github.com/abrakadobr/vpnface_lite_ng.git</a></p>
+</div>
+<div class="section" id="json-api">
+<h2>JSON API<a class="headerlink" href="#json-api" title="Ссылка на этот заголовок">¶</a></h2>
+<p>VPNFace Lite предоставляет набор json api endpoints котрые могут быть использованы отдельно, без панели управления через http запросы.</p>
+<p>Endpoints, использующиеся при установке:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="24%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>GET</td>
+<td>/api/logs</td>
+<td>получить последние логи</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/status</td>
+<td>текущий статус.</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/finilize</td>
+<td>запустить завершение установки</td>
+</tr>
+<tr class="row-even"><td>POST</td>
+<td>/api/confirmip</td>
+<td>установить ip и стартовать установку POST:ip</td>
+</tr>
+<tr class="row-odd"><td>JSONP</td>
+<td>/api/ping</td>
+<td>во время установки подтверждает подключение vpn</td>
+</tr>
+</tbody>
+</table>
+<p>Endpoints, использующиеся при работе:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="24%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>GET</td>
+<td>/api/logs</td>
+<td>получить последние логи</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/status</td>
+<td>текущий статус.</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/ovpn/:key</td>
+<td>скачать ovpn ключ</td>
+</tr>
+<tr class="row-even"><td>POST</td>
+<td>/api/gencli</td>
+<td>создать новый ключ POST:srv, POST:cli key=cli&#64;srv</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/lock/:key</td>
+<td>заблокировать ключ</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/unlock/:key</td>
+<td>разблокировать ключ</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/vpnlist</td>
+<td>полный список серверов (файл servers.json)</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/server/:code</td>
+<td>полная информация о отдельном сервере</td>
+</tr>
+</tbody>
+</table>
+<p>параметр <code class="docutils literal notranslate"><span class="pre">:code</span></code> - код сервера &lt;S&gt; (<a class="reference internal" href="tech.html#data-dir"><span class="std std-ref">Директория данных</span></a>)</p>
+<p>параметр <code class="docutils literal notranslate"><span class="pre">:key</span></code> - составная строка вида <code class="docutils literal notranslate"><span class="pre">client&#64;server</span></code>. к примеру для клиентского ключа <code class="docutils literal notranslate"><span class="pre">admin</span></code> с сервера <code class="docutils literal notranslate"><span class="pre">adm</span></code> параметр <code class="docutils literal notranslate"><span class="pre">:key</span></code> будет равен <code class="docutils literal notranslate"><span class="pre">admin&#64;adm</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tech.html" class="btn btn-neutral float-right" title="Технические детали" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Установка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, abrakadobr.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'ru',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

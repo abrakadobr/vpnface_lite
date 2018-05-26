@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Установка &mdash; Документация VPNFace Lite 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Использование" href="lite.html" />
+    <link rel="prev" title="VPNFace Lite" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> VPNFace Lite
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Установка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Системные требования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#def-install">Простая установка (по умолчанию)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Старт</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1">Шаг 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Шаг 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Шаг 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hlf-install">Установка с настройкой сертификатов или путей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#man-install">Ручная установка</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pnl-install">Установка панели управления на работающий сервер</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lite.html">Использование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Технические детали</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VPNFace Lite</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Установка</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Установка<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Системные требования<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для простой установки требуется OS Ubuntu/Debian, root доступ, доступ в интернет, однако обязательные зависимости проекта - это <code class="docutils literal notranslate"><span class="pre">iptables-persistent</span></code>, <code class="docutils literal notranslate"><span class="pre">tor</span></code>, <code class="docutils literal notranslate"><span class="pre">nodejs</span></code>, <code class="docutils literal notranslate"><span class="pre">easy-rsa</span></code>, <code class="docutils literal notranslate"><span class="pre">openvpn</span></code>. Таким образом в режиме <em>ручной установки</em> систему можно установить на любое устройство-систему, поддерживающие необходимые пакеты.</p>
+</div>
+<div class="section" id="def-install">
+<span id="id3"></span><h2>Простая установка (по умолчанию)<a class="headerlink" href="#def-install" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Простая установка расчитана на быстрое разворачивание минимальной впн инфрастуктуры на чистом сервере. Процесс разделён на несколько шагов, для гарантии выполнения каждого предыдущего.</p>
+<div class="section" id="id4">
+<h3>Старт<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<p>После ssh подключения, используйте скрипт установки через wget</p>
+<p><code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">-qO-</span> <span class="pre">https://raw.githubusercontent.com/abrakadobr/vpnface_lite/master/install.sh</span> <span class="pre">|</span> <span class="pre">bash</span></code></p>
+<p>или curl</p>
+<p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-o-</span> <span class="pre">https://raw.githubusercontent.com/abrakadobr/vpnface_lite/master/install.sh</span> <span class="pre">|</span> <span class="pre">bash</span></code></p>
+<p>Скрипт устанавливает пакеты <code class="docutils literal notranslate"><span class="pre">iptables-persistent</span></code>, <code class="docutils literal notranslate"><span class="pre">easy-rsa</span></code>, <code class="docutils literal notranslate"><span class="pre">openvpn</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">tor</span></code> и <code class="docutils literal notranslate"><span class="pre">nginx</span></code> из системных репозиториев, после чего устанавливает <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">version</span> <span class="pre">manager</span></code> и через него устанавливает <code class="docutils literal notranslate"><span class="pre">nodejs</span> <span class="pre">v10</span></code> и пакеты <code class="docutils literal notranslate"><span class="pre">forever</span></code> и <code class="docutils literal notranslate"><span class="pre">forever-service</span></code>. Скрипт клонирует репозиторий проекта, запускает в нём установку зависимостей <code class="docutils literal notranslate"><span class="pre">npm</span></code>, устанавливает сервис <em>vpnface_lite</em> и стартует его.</p>
+<p>По умолчанию скрипт клонирует файлы проекта в <code class="docutils literal notranslate"><span class="pre">/opt/vpnface_lite</span></code> и хранит данные по пути <code class="docutils literal notranslate"><span class="pre">/opt/vpnface_ca</span></code>.</p>
+<p>Во время установки выйдут 2 вопроса от пакета <code class="docutils literal notranslate"><span class="pre">iptables-persistent</span></code> о сохранении текущих настроек. Если у вас чистый сервер без каких-либо предварительных настроек - на оба можно ответить <code class="docutils literal notranslate"><span class="pre">NO</span></code> - в дальнейшем установка автоматически обновит и сохранит конфигурации. Если у вас сервер имеет какие-то настройки <code class="docutils literal notranslate"><span class="pre">iptables</span></code> - заранее позаботьтесь о их сохранности.</p>
+<img alt="Вопрос о сохранении настроен" src="_images/iptp.png" />
+<p>По завершению стартовых действия скрипт выводит приглашение завершить установку через веб интерфейс.</p>
+</div>
+<div class="section" id="step-1">
+<span id="id5"></span><h3>Шаг 1<a class="headerlink" href="#step-1" title="Ссылка на этот заголовок">¶</a></h3>
+<img alt="Экран запроса ip адреса" src="_images/install1.png" />
+<p>Веб интерфейс запрашивает у пользователя публичный ip-адрес сервера. Скрипт установки пытается определяет адрес для автоматической подстановки через данные http запроса к веб-интерфейсу. После подтверждения ip адреса, скрипт через консоль (<code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">-4</span> <span class="pre">-o</span> <span class="pre">address</span></code>) ищет интерфейс с указаным айпи адресом и сохраняет сетевые данные в json файл <code class="docutils literal notranslate"><span class="pre">ip.json</span></code>.</p>
+<p>Далее создаётся Административный VPN сервер, и инсталлятор переходит на следующий шаг:</p>
+</div>
+<div class="section" id="id6">
+<h3>Шаг 2<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>На втором шаге веб установки пользователю предлагается создать ключ для подключения к Административному VPN серверу.</p>
+<img alt="Создание vpn ключа" src="_images/install2-1.png" />
+<p>После чего инсталятор переходит в режим ожидания VPN подключения, предлагая пользователю скачать и установить OpenVPN клиент, и созданный на предыдущем шаге ключ соединения.</p>
+<img alt="Ожидание VPN подключения" src="_images/install2-2.png" />
+<p>В это время скрипт зацикленно делает <code class="docutils literal notranslate"><span class="pre">jsonp</span></code> запрос на адрес <code class="docutils literal notranslate"><span class="pre">http://10.1.0.1/api/ping</span></code> ожидая ответа, пока пользователь устанавливает и подключает VPN. Когда ответ успешно получен, скрипт автоматически переходит к следующему шагу по внутреннему vpn адресу <code class="docutils literal notranslate"><span class="pre">http://10.1.0.1:8808</span></code></p>
+</div>
+<div class="section" id="id7">
+<h3>Шаг 3<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>При первом переходе по внутреннему адресу, скрипт автоматически запускает завершение установки.</p>
+<img alt="Завершение установки" src="_images/install3.png" />
+<p>Устанавливаются Интернет VPN и Dark VPN сервера, конфигурируются <code class="docutils literal notranslate"><span class="pre">tor</span></code> и <code class="docutils literal notranslate"><span class="pre">nginx</span></code>. Настраивается файрвол <code class="docutils literal notranslate"><span class="pre">iptables</span></code>, и так как на этом этапе мы уже уверены, что пользователь успешно подключился через администраторский vpn, на уровне <code class="docutils literal notranslate"><span class="pre">iptables</span></code> сервер закрывается от любого внешнего доступа, кроме трёх впн портов и конфигурация файрвола сохраняется с помощью <code class="docutils literal notranslate"><span class="pre">iptables-persistent</span></code> пакета.</p>
+<p>По завершению всех действий пользователь автоматически редиректится в основную панель управления по адресу <code class="docutils literal notranslate"><span class="pre">http://10.1.0.1</span></code>.</p>
+</div>
+<div class="section" id="hlf-install">
+<span id="id8"></span><h3>Установка с настройкой сертификатов или путей<a class="headerlink" href="#hlf-install" title="Ссылка на этот заголовок">¶</a></h3>
+<blockquote>
+<div><p>Один из случаев полу-автоматической установки - установка на чистый сервер, с необходимостью настроить данные сертификации или пути установки. В этом случае достаточно выполнить следующие шаги:</p>
+<blockquote>
+<div><ul class="simple">
+<li>скачать файлы проекта <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/abrakadobr/vpnface_lite.git</span> <span class="pre">/etc/vpnface_lite</span></code></li>
+<li>отредактировать файл <code class="docutils literal notranslate"><span class="pre">/etc/vpnface_lite/install.sh</span></code> с указанием необходимого пути установки и отключения выкачивания файлов</li>
+<li>отредактировать файл <code class="docutils literal notranslate"><span class="pre">/etc/vpnface_lite/conf.js</span></code> с указанием необхомого пути корневой директории данных, и данных сертификатов (<a class="reference internal" href="tech.html#config-conf"><span class="std std-ref">Файл конфигурации conf.js</span></a>)</li>
+<li>после редактирования запустить файл <code class="docutils literal notranslate"><span class="pre">/etc/vpnface_lite/install.sh</span></code> и продолжить простую установку (<a class="reference internal" href="#step-1"><span class="std std-ref">Шаг 1</span></a>)</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="man-install">
+<span id="id9"></span><h2>Ручная установка<a class="headerlink" href="#man-install" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В случае, если конфигурация автоматической установки не устраивает, существует несколько возможных путей конфигурации. Помимо скачивания файлов проекта для полноценной работы системы требуется:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Установить и настроить пакет <code class="docutils literal notranslate"><span class="pre">tor</span></code> (<a class="reference internal" href="tech.html#config-tor"><span class="std std-ref">Конфигурация TOR</span></a>)</li>
+<li>При необходимости установить и настроить пакет <code class="docutils literal notranslate"><span class="pre">nginx</span></code> (<a class="reference internal" href="tech.html#config-nginx"><span class="std std-ref">Конфигурация NGINX</span></a>)</li>
+<li>Установить <code class="docutils literal notranslate"><span class="pre">NodeJS</span> <span class="pre">v10</span></code> (<a class="reference internal" href="tech.html#nodejs-info"><span class="std std-ref">NodeJS</span></a>)</li>
+<li>Если необходимо, создать и настроить службу <code class="docutils literal notranslate"><span class="pre">vpnface_lite</span></code> для файла <code class="docutils literal notranslate"><span class="pre">vpnface_lite/server.js</span></code> (<a class="reference internal" href="tech.html#service-info"><span class="std std-ref">Сервис vpnface_lite</span></a>)</li>
+<li>Настроить файрвол <code class="docutils literal notranslate"><span class="pre">iptables/ufw/other</span></code> на правильную маршрутизацию трафика и доступы (<a class="reference internal" href="tech.html#iptables-info"><span class="std std-ref">Iptables</span></a>)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="pnl-install">
+<span id="id10"></span><h3>Установка панели управления на работающий сервер<a class="headerlink" href="#pnl-install" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Другой случай, в котором автоматическая настройка системы может не подойти - это подключение панели управления ключами к существующим и уже работающим OpenVPN серверам, или установка системы на уже работающий в определённой конфигурации сервер. В этом случае шаги будут следующие:</p>
+<blockquote>
+<div><ul class="simple">
+<li>скачать файлы проекта <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/abrakadobr/vpnface_lite.git</span></code> в необходимую директорию</li>
+<li>отредактировать файл <code class="docutils literal notranslate"><span class="pre">vpnface_lite/conf.js</span></code> с указанием необхомого пути корневой директории данных, данные сертификатов и серверов в этом случае не имеют накакого значения. (<a class="reference internal" href="tech.html#config-conf"><span class="std std-ref">Файл конфигурации conf.js</span></a>)</li>
+<li>настроить директорию данных по стуктуре VPNFace Lite. (<a class="reference internal" href="tech.html#data-dir"><span class="std std-ref">Директория данных</span></a>)</li>
+<li>дополнить easy-rsa скрипты для корректной блокировки-разблокировки ключей (<a class="reference internal" href="tech.html#ca-dir"><span class="std std-ref">Центр ключей &lt;S&gt;_ca</span></a>)</li>
+<li>при необходимости, перенастроить OpenVPN сервера, с указанием порта менеджмента (<a class="reference internal" href="tech.html#config-openvpn"><span class="std std-ref">Серверная структура /etc/openvpn/</span></a>)</li>
+<li>создать файл <code class="docutils literal notranslate"><span class="pre">ip.json</span></code> в папке данных с описанием сетевой стуктуры. (<a class="reference internal" href="tech.html#config-ip"><span class="std std-ref">Сетевые настройки ip.json</span></a>)</li>
+<li>создать файл <code class="docutils literal notranslate"><span class="pre">servers.json</span></code> в папке данных с описанием серверов (<a class="reference internal" href="tech.html#config-servers"><span class="std std-ref">База данных servers.json</span></a>)</li>
+<li>настроить проксирование веб-панели управления с порта 8808 на необходимые. (<a class="reference internal" href="tech.html#config-nginx"><span class="std std-ref">Конфигурация NGINX</span></a>)</li>
+<li>установить <code class="docutils literal notranslate"><span class="pre">nodejs</span> <span class="pre">10+</span></code> и настроить запуск сервера по необходимости в виде службы, или как-то ещё. (<a class="reference internal" href="tech.html#service-info"><span class="std std-ref">Сервис vpnface_lite</span></a>)</li>
+</ul>
+</div></blockquote>
+<p>VPNFace при старте проверяет установку по файлам <code class="docutils literal notranslate"><span class="pre">ip.json</span></code> и <code class="docutils literal notranslate"><span class="pre">servers.json</span></code>, и в зависимости от этого переходит в режим установки или обычной работы. Таким образом, создание этих файлов с корректными данными позволит пропустить автоматическую установку, и запустить систему в рабочем режиме. Подробную информацию о *.json файлах, структуре директорий и дополнительных скриптах смотрите в разделе <a class="reference internal" href="tech.html"><span class="doc">Технические детали</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lite.html" class="btn btn-neutral float-right" title="Использование" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="VPNFace Lite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, abrakadobr.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'ru',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

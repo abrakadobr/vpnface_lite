@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VPNFace Lite &mdash; Документация VPNFace Lite 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Установка" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> VPNFace Lite
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lite.html">Использование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Технические детали</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">VPNFace Lite</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>VPNFace Lite</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vpnface-lite">
+<h1>VPNFace Lite<a class="headerlink" href="#vpnface-lite" title="Ссылка на этот заголовок">¶</a></h1>
+<p>VPNFace Lite - набор скриптов для упрощённого разворачивания минимальной инфраструктуры OpenVPN серверов и панель управления клиентскими ключами доступа.</p>
+</div>
+<div class="section" id="id1">
+<h1>Быстрая установка<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>OS Ubuntu/debian, root</p>
+<p>После ssh подключения, используйте скрипт установки через wget</p>
+<p><code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">wget</span> <span class="pre">-qO-</span> <span class="pre">https://raw.githubusercontent.com/abrakadobr/vpnface_lite/master/install.sh</span> <span class="pre">|</span> <span class="pre">bash</span>
+<span class="pre">`</span></code></p>
+<p>или curl</p>
+<p><code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">curl</span> <span class="pre">-o-</span> <span class="pre">https://raw.githubusercontent.com/abrakadobr/vpnface_lite/master/install.sh</span> <span class="pre">|</span> <span class="pre">bash</span>
+<span class="pre">`</span></code></p>
+<p>После выдачи приглашения, завершите установку через веб интерфейс.</p>
+</div>
+<div class="section" id="online">
+<h1>Online документация:<a class="headerlink" href="#online" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="http://vpnface-lite.readthedocs.io/">http://vpnface-lite.readthedocs.io/</a></p>
+<p>Содержание:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id2">Системные требования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#def-install">Простая установка (по умолчанию)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#man-install">Ручная установка</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lite.html">Использование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lite.html#vpn">VPN сервера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lite.html#id4">Панель управления ключами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lite.html#json-api">JSON API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Технические детали</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#tch-main">Общая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#vpn">VPN подсети</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#tor">Конфигурация TOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#nginx">Конфигурация NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#data-dir">Директория данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#etc-openvpn">Серверная структура /etc/openvpn/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#conf-type">CONF.TYPE настройка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#conf-js">Файл конфигурации conf.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#vpnface-lite">Сервис vpnface_lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#iptables">Iptables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech.html#nodejs">NodeJS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>MIT License</p>
+<p>Copyright (c) [2018] [abrakadobr - <a class="reference external" href="https://github.com/abrakadobr/">https://github.com/abrakadobr/</a>]</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the «Software»), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED «AS IS», WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Установка" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, abrakadobr.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'ru',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

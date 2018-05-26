@@ -1,0 +1,31 @@
+{
+  "name": "vpnface_lite",
+  "version": "1.0.0",
+  "description": "OpenVPN keys manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "abrakadobr",
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrakadobr/vpnface_lite.git"
+  },
+  "keywords": [
+    "vpn",
+    "openvpn",
+    "angularjs",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abrakadobr/vpnface_lite/issues"
+  },
+  "homepage": "https://github.com/abrakadobr/vpnface_lite",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "ip": "^1.1.5",
+    "shelljs": "^0.8.2"
+  }
+}
