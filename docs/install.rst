@@ -18,11 +18,11 @@
 
 После ssh подключения, используйте скрипт установки через wget
 
-``wget -qO- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.0/install.sh | bash``
+``wget -qO- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.1/install.sh | bash``
 
 или curl
 
-``curl -o- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.0/install.sh | bash``
+``curl -o- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.1/install.sh | bash``
 
 Скрипт устанавливает пакеты ``iptables-persistent``, ``easy-rsa``, ``openvpn``, ``git``, ``tor`` и ``nginx`` из системных репозиториев, после чего устанавливает ``node version manager`` и через него устанавливает ``nodejs v10`` и пакеты ``forever`` и ``forever-service``. Скрипт клонирует репозиторий проекта, запускает в нём установку зависимостей ``npm``, устанавливает сервис *vpnface_lite* и стартует его.
 

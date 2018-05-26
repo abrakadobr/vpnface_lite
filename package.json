@@ -1,6 +1,6 @@
 {
   "name": "vpnface_lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenVPN keys manager",
   "main": "server.js",
   "scripts": {

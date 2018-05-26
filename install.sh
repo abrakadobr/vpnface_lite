@@ -6,7 +6,7 @@ apt-get install -y openvpn easy-rsa git tor nginx iptables-persistent
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 VFL_DIR=/opt/vpnface_lite
-VFL_GIT=https://gitlab.com/abrakadobr/takatan-vpn
+VFL_GIT=https://github.com/abrakadobr/vpnface_lite
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
