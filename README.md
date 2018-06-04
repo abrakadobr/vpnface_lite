@@ -12,13 +12,13 @@ OS Ubuntu/debian, root
 После ssh подключения, используйте скрипт установки через wget
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.2/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.3/install.sh | bash
 ```
 
 или curl
 
 ```sh
-curl -o- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/abrakadobr/vpnface_lite/v1.0.3/install.sh | bash
 ```
 
 После выдачи приглашения, завершите установку через веб интерфейс.
