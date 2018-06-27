@@ -22,7 +22,7 @@ class Core extends EventEmitter
     this._servers = {}
 
     this.openvpn = new OpenVPN()
-    this.iptables = new Iptables()
+    this.iptables = new Iptables(conf)
 
     this.loadIP()
     this.loadServers()
@@ -54,7 +54,9 @@ class Core extends EventEmitter
     ////        SET IP [POST!]
     this.app.post('/api/confirmip',(req,res)=>{
       this._ip = req.body.ip
-      res.json({success:true}).end()
+      let admIntranet = ip.cidrSubnet(conf.servers.adm.network.intranet)
+      let admIP = admIntranet.firstAddress
+      res.json({success:true,admIP:admIP}).end()
       if (this._installing)
         return
       this._installing = true
@@ -246,6 +248,10 @@ class Core extends EventEmitter
     sjs.cd(this.dir)
     let torConf = fs.readFileSync('./tpl/tor.conf')
     let nginxConf = fs.readFileSync('./tpl/nginx.conf')
+    let admIP = ip.cidrSubnet(conf.servers.adm.network.intranet).firstAddress
+    let torIP = ip.cidrSubnet(conf.servers.dark.network.intranet).firstAddress
+    nginxConf = nginxConf.replace(/#ADM_IP/g,admIP)
+    torConf = torConf.replace(/#LCL_IP/g,torIP)
     fs.writeFileSync('/etc/tor/torrc',torConf)
     fs.writeFileSync('/etc/nginx/sites-available/vpnface_lite.conf',nginxConf)
     sjs.exec('ln -s /etc/nginx/sites-available/vpnface_lite.conf /etc/nginx/sites-enabled/')

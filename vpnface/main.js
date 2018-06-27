@@ -58,6 +58,7 @@ var APIService = /** @class */ (function () {
         this._mtitle = '';
         this._hasMenu = true;
         this._load = '';
+        this._adminIP = '';
     }
     //common
     APIService.prototype.lastLogs = function () {
@@ -138,10 +139,10 @@ var APIService = /** @class */ (function () {
     };
     //install
     APIService.prototype.finilizeInstall = function () {
-        return this.http.get('http://10.1.0.1:8808/api/finilize');
+        return this.http.get('http://' + this._adminIP + ':8808/api/finilize');
     };
     APIService.prototype.ping10 = function () {
-        return this.http.jsonp('http://10.1.0.1:8808/api/ping', 'cb');
+        return this.http.jsonp('http://' + this._adminIP + ':8808/api/ping', 'cb');
     };
     APIService.prototype.confirmIP = function (ip) {
         return this.http.post('/api/confirmip', { ip: ip });
@@ -755,6 +756,7 @@ var InstallerComponent = /** @class */ (function () {
         this._load = true;
         this._log = 'Сохраняем адрес';
         this.api.confirmIP(this._ip).subscribe(function (data) {
+            _this.api._adminIP = data.admIP;
             _this._log = 'Создаётся администраторский VPN. Генерация ключей безопасности на слабых серверах может длиться до 10 минут. Не закрывайте эту страницу.';
         });
     };
@@ -1702,7 +1704,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/devop/dev/vpnface/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/src/main.ts */"./src/main.ts");
 
 
 /***/ })

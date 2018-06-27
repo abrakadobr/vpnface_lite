@@ -57,6 +57,15 @@ class Iptables extends EventEmitter
     return null
   }
 
+  net(srvCode)
+  {
+    return {
+      ip: ip.cidrSubnet(this._conf.servers[srvCode].network.intranet).firstAddress,
+      net: this._conf.servers[srvCode].network.intranet,
+      dev: this._conf.servers[srvCode].network.dev
+    }
+  }
+
   async installRules()
   {
     log.log('IPTABLES','устанавливаем правила')
@@ -67,14 +76,14 @@ class Iptables extends EventEmitter
     sjs.exec('iptables -A INPUT -p udp --dport 1195 -j ACCEPT')
     sjs.exec('iptables -A INPUT -p udp --dport 1196 -j ACCEPT')
 
-    sjs.exec('iptables -A INPUT -s 10.1.0.0/24 -j ACCEPT')
-    sjs.exec('iptables -A INPUT -s 10.2.0.0/24 -d 10.2.0.1 -j ACCEPT')
-    sjs.exec('iptables -A INPUT -s 10.3.0.0/24 -d 10.3.0.1 -j ACCEPT')
+    sjs.exec('iptables -A INPUT -s '+this.net('adm').net+' -j ACCEPT')
+    sjs.exec('iptables -A INPUT -s '+this.net('inet').net+' -d '+this.net('inet').ip+' -j ACCEPT')
+    sjs.exec('iptables -A INPUT -s '+this.net('dark').net+' -d '+this.net('dark').ip+' -j ACCEPT')
 
-    sjs.exec('iptables -t nat -A POSTROUTING -s 10.3.0.0/24 -o '+this._dev+' -j MASQUERADE')
+    sjs.exec('iptables -t nat -A POSTROUTING -s '+this.net('inet').net+' -o '+this._dev+' -j MASQUERADE')
 
-    sjs.exec('iptables -t nat -A PREROUTING -i tun1 -p udp --dport 53 -j REDIRECT --to-ports 5300')
-    sjs.exec('iptables -t nat -A PREROUTING -i tun1 -p tcp --syn -j REDIRECT --to-ports 9040')
+    sjs.exec('iptables -t nat -A PREROUTING -i '+this.net('dark').dev+' -p udp --dport 53 -j REDIRECT --to-ports 5300')
+    sjs.exec('iptables -t nat -A PREROUTING -i '+this.net('dark').dev+' -p tcp --syn -j REDIRECT --to-ports 9040')
 
     sjs.exec('iptables -A INPUT -j DROP')
     sjs.exec('iptables-save > /etc/iptables/rules.v4')
