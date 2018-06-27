@@ -133,7 +133,8 @@ class Core extends EventEmitter
 
     ////        STATUS
     this.app.get('/api/status',(req,res)=>{
-      res.json({status: this._status})
+      let admIP = ip.cidrSubnet(conf.servers.adm.network.intranet).firstAddress
+      res.json({status: this._status,admIP:admIP})
     })
 
     ////        VPN LIST

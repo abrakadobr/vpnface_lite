@@ -242,7 +242,8 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.api.loadStatus().subscribe(function (data) {
             if (_this._status != data.status)
-                _this.setStatus(data.status);
+                _this.api._adminIP = data.admIP;
+            _this.setStatus(data.status);
             if (_this._doNext)
                 setTimeout(function () {
                     _this.updateStatus();
