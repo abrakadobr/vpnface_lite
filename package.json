@@ -1,13 +1,13 @@
 {
   "name": "vpnface_lite",
-  "version": "1.0.3",
+  "version": "1.1.4",
   "description": "OpenVPN keys manager",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "abrakadobr",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/abrakadobr/vpnface_lite.git"
   },

@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/devop/dev/vpnface/node_modules/@angular/material/prebuilt-themes/indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
-module.exports = __webpack_require__(/*! /home/devop/dev/vpnface/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/node_modules/@angular/material/prebuilt-themes/indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+module.exports = __webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/src/styles.css */"./src/styles.css");
 
 
 /***/ })

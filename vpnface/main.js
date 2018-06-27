@@ -58,7 +58,12 @@ var APIService = /** @class */ (function () {
         this._mtitle = '';
         this._hasMenu = true;
         this._load = '';
+        this._adminIP = '';
     }
+    APIService.prototype.setAdminIP = function (ip) {
+        if (this._adminIP == '')
+            this._adminIP = ip;
+    };
     //common
     APIService.prototype.lastLogs = function () {
         return this.http.get('/api/logs');
@@ -67,6 +72,7 @@ var APIService = /** @class */ (function () {
         var _this = this;
         return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (o) {
             _this.http.get('/api/status/').subscribe(function (data) {
+                _this.setAdminIP(data.admIP);
                 _this._status = data.status;
                 o.next(data);
                 o.complete();
@@ -138,10 +144,10 @@ var APIService = /** @class */ (function () {
     };
     //install
     APIService.prototype.finilizeInstall = function () {
-        return this.http.get('http://10.1.0.1:8808/api/finilize');
+        return this.http.get('http://' + this._adminIP + ':8808/api/finilize');
     };
     APIService.prototype.ping10 = function () {
-        return this.http.jsonp('http://10.1.0.1:8808/api/ping', 'cb');
+        return this.http.jsonp('http://' + this._adminIP + ':8808/api/ping', 'cb');
     };
     APIService.prototype.confirmIP = function (ip) {
         return this.http.post('/api/confirmip', { ip: ip });
@@ -253,7 +259,7 @@ var AppComponent = /** @class */ (function () {
         if (st === void 0) { st = 'none'; }
         //special single case on install finished
         if (this._status == 'install2' && st == 'ready') {
-            window.location.replace('http://10.1.0.1/vpn/adm');
+            window.location.replace('http://' + this.api._adminIP + '/vpn/adm');
             return;
         }
         this._status = st;
@@ -875,7 +881,7 @@ var Installer1Component = /** @class */ (function () {
         this.api.ping10().subscribe({
             next: function (ping) {
                 console.log(['ping!', ping]);
-                window.location.replace('http://10.1.0.1:8808/install2');
+                window.location.replace('http://' + _this.api._adminIP + ':8808/install2');
             },
             error: function (err) {
                 console.log(err);
@@ -953,9 +959,12 @@ var Installer2Component = /** @class */ (function () {
         this.api = api;
     }
     Installer2Component.prototype.ngOnInit = function () {
+        var _this = this;
         this.api._title = 'Установка. шаг 3';
         this.api._hasMenu = false;
-        this.api.finilizeInstall().subscribe(function (start) { });
+        setTimeout(function () {
+            _this.api.finilizeInstall().subscribe(function (start) { });
+        }, 5000);
     };
     Installer2Component = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1702,7 +1711,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/devop/dev/vpnface/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/src/main.ts */"./src/main.ts");
 
 
 /***/ })
