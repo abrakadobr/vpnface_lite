@@ -246,8 +246,8 @@ class Core extends EventEmitter
   {
     log.log('конфигурируем пакеты')
     sjs.cd(this.dir)
-    let torConf = fs.readFileSync('./tpl/tor.conf')
-    let nginxConf = fs.readFileSync('./tpl/nginx.conf')
+    let torConf = fs.readFileSync('./tpl/tor.conf').toString()
+    let nginxConf = fs.readFileSync('./tpl/nginx.conf').toString()
     let admIP = ip.cidrSubnet(conf.servers.adm.network.intranet).firstAddress
     let torIP = ip.cidrSubnet(conf.servers.dark.network.intranet).firstAddress
     nginxConf = nginxConf.replace(/#ADM_IP/g,admIP)

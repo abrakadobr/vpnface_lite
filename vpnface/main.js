@@ -254,7 +254,7 @@ var AppComponent = /** @class */ (function () {
         if (st === void 0) { st = 'none'; }
         //special single case on install finished
         if (this._status == 'install2' && st == 'ready') {
-            window.location.replace('http://10.1.0.1/vpn/adm');
+            window.location.replace('http://' + this.api._adminIP + '/vpn/adm');
             return;
         }
         this._status = st;
@@ -877,7 +877,7 @@ var Installer1Component = /** @class */ (function () {
         this.api.ping10().subscribe({
             next: function (ping) {
                 console.log(['ping!', ping]);
-                window.location.replace('http://10.1.0.1:8808/install2');
+                window.location.replace('http://' + _this.api._adminIP + ':8808/install2');
             },
             error: function (err) {
                 console.log(err);
