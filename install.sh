@@ -35,7 +35,10 @@ npm i -g forever
 npm i -g forever-service
 
 #git clone to installation path
+#comment cloning, if you installing with config file configuration
 git clone $VFL_GIT $VFL_DIR
+#and don't forget to use release, not master =)
+cd $VFL_DIR && git checkout release
 
 #installing deps
 cd $VFL_DIR && npm i

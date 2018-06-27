@@ -61,7 +61,6 @@ var APIService = /** @class */ (function () {
         this._adminIP = '';
     }
     APIService.prototype.setAdminIP = function (ip) {
-        console.log(['set admin ip', ip]);
         if (this._adminIP == '')
             this._adminIP = ip;
     };
@@ -1712,7 +1711,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/abra/vpnface_lite_ng/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/src/main.ts */"./src/main.ts");
 
 
 /***/ })

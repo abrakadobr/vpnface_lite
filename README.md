@@ -28,3 +28,9 @@ Online документация:
 ====================
 
 http://vpnface-lite.readthedocs.io/
+
+
+Changelog
+=========
+
+Check CHANGELOG.md
