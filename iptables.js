@@ -44,9 +44,9 @@ class Iptables extends EventEmitter
     log.log('IPTABLES','настраиваем ядро net.ipv4.ip_forward=1')
     sjs.exec('echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf')
     log.log('IPTABLES','отключаем ip6')
-    sjs.exec('echo "net.ipv6.conf.all.disable_ipv6=1 >> /etc/sysctl.conf')
-    sjs.exec('echo "net.ipv6.conf.default.disable_ipv6=1 >> /etc/sysctl.conf')
-    sjs.exec('echo "net.ipv6.conf.lo.disable_ipv6=1 >> /etc/sysctl.conf')
+    sjs.exec('echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf')
+    sjs.exec('echo "net.ipv6.conf.default.disable_ipv6=1" >> /etc/sysctl.conf')
+    sjs.exec('echo "net.ipv6.conf.lo.disable_ipv6=1" >> /etc/sysctl.conf')
     sjs.exec('sysctl -p')
     log.success('IPTABLES','файрвол готов к системной установке')
     return null
