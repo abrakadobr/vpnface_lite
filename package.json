@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "abrakadobr",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/abrakadobr/vpnface_lite.git"
   },

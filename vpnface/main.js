@@ -60,6 +60,11 @@ var APIService = /** @class */ (function () {
         this._load = '';
         this._adminIP = '';
     }
+    APIService.prototype.setAdminIP = function (ip) {
+        console.log(['set admin ip', ip]);
+        if (this._adminIP == '')
+            this._adminIP = ip;
+    };
     //common
     APIService.prototype.lastLogs = function () {
         return this.http.get('/api/logs');
@@ -68,6 +73,7 @@ var APIService = /** @class */ (function () {
         var _this = this;
         return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (o) {
             _this.http.get('/api/status/').subscribe(function (data) {
+                _this.setAdminIP(data.admIP);
                 _this._status = data.status;
                 o.next(data);
                 o.complete();
@@ -242,8 +248,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.api.loadStatus().subscribe(function (data) {
             if (_this._status != data.status)
-                _this.api._adminIP = data.admIP;
-            _this.setStatus(data.status);
+                _this.setStatus(data.status);
             if (_this._doNext)
                 setTimeout(function () {
                     _this.updateStatus();
@@ -757,7 +762,6 @@ var InstallerComponent = /** @class */ (function () {
         this._load = true;
         this._log = 'Сохраняем адрес';
         this.api.confirmIP(this._ip).subscribe(function (data) {
-            _this.api._adminIP = data.admIP;
             _this._log = 'Создаётся администраторский VPN. Генерация ключей безопасности на слабых серверах может длиться до 10 минут. Не закрывайте эту страницу.';
         });
     };
@@ -956,9 +960,12 @@ var Installer2Component = /** @class */ (function () {
         this.api = api;
     }
     Installer2Component.prototype.ngOnInit = function () {
+        var _this = this;
         this.api._title = 'Установка. шаг 3';
         this.api._hasMenu = false;
-        this.api.finilizeInstall().subscribe(function (start) { });
+        setTimeout(function () {
+            _this.api.finilizeInstall().subscribe(function (start) { });
+        }, 5000);
     };
     Installer2Component = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1705,7 +1712,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/developer/dev/nodejs/vpnface_lite_ng/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/abra/vpnface_lite_ng/src/main.ts */"./src/main.ts");
 
 
 /***/ })
