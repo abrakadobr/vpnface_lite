@@ -11,6 +11,10 @@ major increases on core updates
 minor - on features
 patch - on every release, reseting on major increase
 
+current master
+==============
+
++ fast fix for OpenVPN 2.4 and EasyRSA 3.0.4 for ubuntu 18.04 and 18.10
 
 v1.1.4
 ======

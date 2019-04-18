@@ -119,15 +119,15 @@ class Core extends EventEmitter
 
     ////        UNLOCK CLI [POST]
     this.app.get('/api/unlock/:key',(req,res)=>{
-      let key = req.params.key
-      log.test(`разблокирую ключ ${key}`)
-      this.unlockClient(key).then((ret)=>{
-        if (ret.success)
-          log.success(`ключ ${key} разблокирован`)
-        else
-          log.error(`Ошибка! ${ret.err}`)
-        res.json(ret)
-      })
+      //let key = req.params.key
+      //log.test(`разблокирую ключ ${key}`)
+      //this.unlockClient(key).then((ret)=>{
+        //if (ret.success)
+          //log.success(`ключ ${key} разблокирован`)
+        //else
+          //log.error(`Ошибка! ${ret.err}`)
+        res.json({err:'No unlock functionality'})
+      //})
     })
 
 
@@ -181,7 +181,7 @@ class Core extends EventEmitter
     {
       log.error('Установка не завершена')
       this._status = 'install2'
-      log.test('??','Подключите VPN и откройте адрес http://10.1.0.1:8808 для завершения установки.')
+      log.test('??','Подключите VPN и откройте адрес http://'+conf.servers.adm.network.intranet.split('/').shift()+':8808 для завершения установки.')
       //log.error('!!','Не закрывайте это окно!')
       return
     }
@@ -301,7 +301,7 @@ class Core extends EventEmitter
       blocked: false,
       server: srv
     }
-    await this.openvpn.buildCRL({code:srv})
+    //await this.openvpn.buildCRL({code:srv})
     this._servers[srv].clients.push(clio)
     this.saveServers()
     return cli
